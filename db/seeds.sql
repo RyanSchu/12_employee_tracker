@@ -15,12 +15,12 @@ VALUES  ("refiner", 500000, 1),
         ("guard", 100000, 5);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES  ("Helly", "R", 1, 3),
+VALUES  ("Harmony","Cobel",5,null),
+        ("Mark", "S", 1, 1),
+        ("Helly", "R", 1, 2),
         ("Burt", "G", 2, null),
-        ("Mark", "S", 1, 6),
-        ("Irving", "B", 1, 3),
-        ("Dylan", "G", 1, 3),
-        ("Harmony","Cobel",null),
-        ("Seth","Milchick",6),
+        ("Irving", "B", 1, 2),
+        ("Dylan", "G", 1, 2),
+        ("Seth","Milchick",5,1),
         ("Gemma","Casey",4,null),
         ("Doug","Graner",6,null);
