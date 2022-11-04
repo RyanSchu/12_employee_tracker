@@ -43,6 +43,17 @@ const addEmployee = (data) => {
   db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUE ("${data.first_name}", "${data.last_name}", ${data.role_id}, ${data.manager_id});`)
 }
 
-const wrap = {allEmployees,allRoles,allDepartments,addEmployee,addDepartment}
+const addRole = (data) => {
+  db.query(`INSERT INTO role (title, salary, department_id) VALUE ("${data.title}", ${data.salary}, ${data.department_id});`)
+}
+
+const wrap = {
+  allEmployees,
+  allRoles,
+  allDepartments,
+  addEmployee,
+  addDepartment,
+  addRole
+}
 
 module.exports = wrap

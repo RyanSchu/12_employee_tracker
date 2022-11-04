@@ -8,7 +8,7 @@ const mainMenuQuestions = [
                   "View all roles", 
                   "View all employees",
                   "Add a department", 
-                  "Ad a role", 
+                  "Add a role", 
                   "Add an employee",
                   "Update an employee role"],
         message: "What would you like to do?",
@@ -89,10 +89,11 @@ const userMenu = async () => {
             handlers.addEmployee(employee)
             userMenu()
             break;
-
-        // case value:
-        //     userMenu()
-        //     break;
+        case "Add a role":
+            const role = await inquirer.prompt([...roleQuestions])
+            handlers.addRole(role)
+            userMenu()
+            break;
         // case value:
         //     userMenu()
         //     break;
