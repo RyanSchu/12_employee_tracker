@@ -16,6 +16,52 @@ const mainMenuQuestions = [
     }
 ]
 
+const employeeQuestions = [
+    {
+        type: 'input',
+        message: "Please enter employee first name:",
+        name: 'first_name'
+    },
+    {
+        type: 'input',
+        message: "Please enter employee last name:",
+        name: 'last_name'
+    },
+    {
+        type: 'input',
+        message: "Please enter role id:",
+        name: 'role_id'
+    },
+    {
+        type: 'input',
+        message: "Please enter manager id:",
+        name: 'manager_id'
+    }
+]
+const roleQuestions = [
+    {
+        type: 'input',
+        message: "Please enter the role's title:",
+        name: 'title'
+    },
+    {
+        type: 'input',
+        message: "Please enter the role's salary:",
+        name: 'salary'
+    },
+    {
+        type: 'input',
+        message: "Please enter the role's department id:",
+        name: 'department_id'
+    },
+]
+const departmentQuestions = [
+    {
+        type: 'input',
+        message: "Please enter department date:",
+        name: 'name'
+    }
+]
 
 
 const userMenu = async () => {
@@ -33,9 +79,11 @@ const userMenu = async () => {
             handlers.allEmployees()
             userMenu()
             break;
-        // case value:
-        //     userMenu()
-        //     break;
+        case "Add an employee":
+            const department = await inquirer.prompt([...employeeQuestions])
+            handlers.addEmployee(department)
+            userMenu()
+            break;
         // case value:
         //     userMenu()
         //     break;
