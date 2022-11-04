@@ -1,5 +1,6 @@
 const mysql = require('mysql2');
-const ctable = require('console.table')
+const ctable = require('console.table');
+const inquirer = require('inquirer');
 
 const db = mysql.createConnection(
     {
@@ -47,13 +48,43 @@ const addRole = (data) => {
   db.query(`INSERT INTO role (title, salary, department_id) VALUE ("${data.title}", ${data.salary}, ${data.department_id});`)
 }
 
+
+const updateRole = async (data) => {
+  const [results] = await db.promise().query('SELECT id, first_name, last_name FROM employee')
+  const employeeList = results.map(element => element.id + " " + element.first_name + ' ' + element.last_name)
+  const updateQuestions = [
+    {
+      type:"list",
+      choices:employeeList,
+      message: "Please select an employee",
+      name:"userChoice"
+    },
+    {
+      type: "input",
+      message:"please input their new role id",
+      name:'newRole'
+    },
+    {
+      type: "input",
+      message:"please input their new manager id",
+      name:'newManager'
+    }
+  ]
+
+  const userInput = await inquirer.prompt([...updateQuestions])
+  console.log(userInput.userChoice)
+
+  await db.promise().query(`UPDATE employee SET role_id = ${userInput.newRole}, manager_id = ${userInput.newManager} WHERE id = ${userInput.userChoice.split(' ')[0]}`)
+  return
+}
 const wrap = {
   allEmployees,
   allRoles,
   allDepartments,
   addEmployee,
   addDepartment,
-  addRole
+  addRole,
+  updateRole
 }
 
 module.exports = wrap

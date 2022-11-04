@@ -58,7 +58,7 @@ const roleQuestions = [
 const departmentQuestions = [
     {
         type: 'input',
-        message: "Please enter department date:",
+        message: "Please enter department names:",
         name: 'name'
     }
 ]
@@ -94,9 +94,10 @@ const userMenu = async () => {
             handlers.addRole(role)
             userMenu()
             break;
-        // case value:
-        //     userMenu()
-        //     break;
+        case "Update an employee role":
+            await handlers.updateRole()
+            userMenu()
+            break;
         default:
             console.log("Choice not supported yet")
             userMenu()
