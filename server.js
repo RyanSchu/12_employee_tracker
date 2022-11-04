@@ -68,7 +68,7 @@ const userMenu = async () => {
     const userChoice = await inquirer.prompt([...mainMenuQuestions])
     switch (userChoice.choice) {
         case 'View all departments':
-            handlers.allEmployees()
+            handlers.allDepartments()
             userMenu()
             break;
         case 'View all roles':
@@ -79,14 +79,17 @@ const userMenu = async () => {
             handlers.allEmployees()
             userMenu()
             break;
-        case "Add an employee":
-            const department = await inquirer.prompt([...employeeQuestions])
-            handlers.addEmployee(department)
+        case 'Add a department':
+            const department = await inquirer.prompt([...departmentQuestions])
+            handlers.addDepartment(department)
             userMenu()
             break;
-        // case value:
-        //     userMenu()
-        //     break;
+        case "Add an employee":
+            const employee = await inquirer.prompt([...employeeQuestions])
+            handlers.addEmployee(employee)
+            userMenu()
+            break;
+
         // case value:
         //     userMenu()
         //     break;
