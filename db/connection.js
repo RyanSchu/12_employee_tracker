@@ -17,7 +17,7 @@ const db = mysql.createConnection(
 
 // employee
 const allEmployees = () => {
-      db.query('SELECT * FROM employee', function (err, results) {
+      db.query(`SELECT tmp.id, tmp.first_name, tmp.last_name, role.title, role.salary, department.name AS department, CONCAT(m.first_name, ' ',m.last_name) AS manager FROM employee tmp LEFT JOIN role ON role_id = role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee tmp2 ON tmp.manager_id = tmp2.id`, function (err, results) {
         console.table(results);
       });
 }
